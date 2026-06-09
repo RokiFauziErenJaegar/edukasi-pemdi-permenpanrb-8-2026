@@ -29,6 +29,7 @@ async function init() {
   renderTimeline();
   renderMetode();
   renderTindakLanjut();
+  renderTanggapan();
   renderGlosarium();
   initQuiz();
   setupReveal(); // re-scan newly injected nodes
@@ -374,6 +375,46 @@ function updateTLProgress() {
   const pct = all.length ? Math.round((done / all.length) * 100) : 0;
   $("#tlBarFill").style.width = pct + "%";
   $("#tlProgressText").textContent = `${pct}% siap (${done}/${all.length})`;
+}
+
+/* ---------- TANGGAPAN KRITIS ---------- */
+function renderTanggapan() {
+  const tanya = DATA.pertanyaanKritis || [];
+  const saran = DATA.saranMembangun || [];
+  $("#countTanya").textContent = tanya.length;
+  $("#countSaran").textContent = saran.length;
+
+  $("#tanyaGrid").innerHTML = tanya
+    .map(
+      (t) => `
+    <article class="resp-card q reveal">
+      <div class="resp-head"><span class="resp-no">${String(t.no).padStart(2, "0")}</span><span class="resp-cat">${t.kategori}</span></div>
+      <p class="resp-main">${t.q}</p>
+      <p class="resp-sub">⚠️ ${t.konteks}</p>
+    </article>`
+    )
+    .join("");
+
+  $("#saranGrid").innerHTML = saran
+    .map(
+      (s) => `
+    <article class="resp-card s reveal">
+      <div class="resp-head"><span class="resp-no">${String(s.no).padStart(2, "0")}</span><span class="resp-cat">${s.kategori}</span></div>
+      <p class="resp-main">${s.saran}</p>
+      <p class="resp-sub">✅ ${s.manfaat}</p>
+    </article>`
+    )
+    .join("");
+
+  $$("#tanggapan .tab-btn").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.tab;
+      $$("#tanggapan .tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
+      $("#paneTanya").classList.toggle("active", tab === "tanya");
+      $("#paneSaran").classList.toggle("active", tab === "saran");
+      setupReveal();
+    })
+  );
 }
 
 /* ---------- GLOSARIUM ---------- */

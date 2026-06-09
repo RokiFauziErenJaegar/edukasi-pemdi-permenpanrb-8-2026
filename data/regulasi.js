@@ -618,6 +618,191 @@ const glosarium = [
   { istilah: "Dasbor Presiden", arti: "Sarana konsolidasi data lintas instansi untuk mendukung pengambilan keputusan tingkat nasional." },
 ];
 
+/* ----------------------------------------------------------------------------
+ * TANGGAPAN KRITIS ASN — Pertanyaan kritis & saran membangun
+ * atas PermenPANRB 8/2026. Disusun dari kacamata ASN yang berpikir kritis
+ * untuk bahan diskusi/masukan konstruktif (bukan menolak peraturan).
+ * -------------------------------------------------------------------------- */
+const pertanyaanKritis = [
+  {
+    no: 1,
+    kategori: "Transisi & Implementasi",
+    q: "Pasal 11 tidak menetapkan batas waktu penyesuaian target Indeks SPBE menjadi Indeks Pemdi. Berapa lama masa transisi resmi, dan apa konsekuensinya bila instansi belum siap pada siklus penilaian pertama?",
+    konteks: "Tanpa tenggat & skenario peralihan yang jelas, instansi rawan menafsirkan kesiapan secara berbeda-beda.",
+  },
+  {
+    no: 2,
+    kategori: "Metodologi",
+    q: "Aspek Kepuasan Pengguna berbobot terbesar (25%). Instrumen baku apa yang dipakai mengukurnya agar objektif, dapat dibandingkan antarinstansi, dan tidak bias bagi instansi dengan jumlah pengguna kecil?",
+    konteks: "Bobot dominan pada persepsi pengguna menuntut metodologi survei yang seragam & teruji.",
+  },
+  {
+    no: 3,
+    kategori: "Interoperabilitas",
+    q: "Sebagian kuesioner memakai indeks hasil evaluasi instansi pusat lain (mis. SDI, keamanan). Bila data antarsistem belum interoperable, apakah nilai instansi dirugikan oleh kesiapan pihak lain yang di luar kendalinya?",
+    konteks: "Ketergantungan nilai pada sistem lembaga lain berisiko menimbulkan ketidakadilan penilaian.",
+  },
+  {
+    no: 4,
+    kategori: "Kedalaman Penilaian",
+    q: "Indikator dipangkas dari 47 (SPBE) menjadi 20 (Pemdi). Apakah penyederhanaan ini berisiko menghilangkan aspek teknis penting, dan bagaimana memastikan 20 indikator tetap merepresentasikan kematangan secara utuh?",
+    konteks: "Ringkas itu baik, tetapi perlu dipastikan tidak mengorbankan validitas pengukuran.",
+  },
+  {
+    no: 5,
+    kategori: "Keadilan & Kapasitas",
+    q: "Apakah indikator & kriteria yang sama diberlakukan untuk kementerian besar maupun pemerintah kabupaten/kota kecil dengan kapasitas fiskal & SDM terbatas? Bagaimana asas keadilan penilaian dijaga?",
+    konteks: "Perlakuan seragam atas kapasitas yang timpang bisa melebarkan kesenjangan digital.",
+  },
+  {
+    no: 6,
+    kategori: "Anggaran",
+    q: "Tindak lanjut (kriptografi, CSIRT, infrastruktur, kompetensi AI) berbiaya tinggi. Adakah skema pendanaan khusus (mis. DAK bidang digital) bagi daerah berfiskal terbatas agar target Indeks Pemdi realistis?",
+    konteks: "Target tinggi tanpa dukungan anggaran berisiko hanya menjadi formalitas di atas kertas.",
+  },
+  {
+    no: 7,
+    kategori: "Anggaran & SDM",
+    q: "Kompetensi Digital ASN dituntut hingga pemanfaatan AI & analisis data. Bagaimana strategi pemerataan kompetensi, khususnya bagi daerah 3T dan ASN nonteknis?",
+    konteks: "Kesenjangan kompetensi digital antarwilayah masih lebar dan butuh afirmasi.",
+  },
+  {
+    no: 8,
+    kategori: "Objektivitas Asesor",
+    q: "Tim Asesor Eksternal ditetapkan Menteri dan dapat melibatkan tenaga ahli. Bagaimana sertifikasi, kode etik, dan pencegahan konflik kepentingan asesor dijamin agar penilaian kredibel?",
+    konteks: "Kualitas hasil sangat bergantung pada kapasitas & integritas asesor.",
+  },
+  {
+    no: 9,
+    kategori: "Validitas",
+    q: "Penilaian Mandiri rawan over-claim. Apakah kapasitas Tim Asesor Eksternal memadai untuk memverifikasi seluruh lokus secara mendalam, atau verifikasi hanya bersifat administratif?",
+    konteks: "Verifikasi yang dangkal membuat indeks tidak mencerminkan kondisi nyata.",
+  },
+  {
+    no: 10,
+    kategori: "Beban Pelaporan",
+    q: "Bagaimana keterkaitan Evaluasi Kinerja Pemdi dengan evaluasi lain (Reformasi Birokrasi, SAKIP, indeks pencegahan korupsi)? Adakah risiko tumpang tindih & beban pelaporan ganda bagi instansi?",
+    konteks: "Instansi sudah menanggung banyak evaluasi; efisiensi data perlu dijaga.",
+  },
+  {
+    no: 11,
+    kategori: "Jadwal & Frekuensi",
+    q: "Peraturan tidak merinci periodisitas evaluasi. Seberapa sering Evaluasi Kinerja Pemdi dilakukan, dan kapan jadwal nasional siklus pertama ditetapkan?",
+    konteks: "Kepastian jadwal penting untuk perencanaan & penganggaran instansi.",
+  },
+  {
+    no: 12,
+    kategori: "Insentif & Konsekuensi",
+    q: "Apa konsekuensi konkret dari nilai indeks — baik penghargaan maupun pembinaan? Tanpa insentif/disinsentif yang jelas, bagaimana peraturan mendorong perubahan nyata, bukan sekadar kepatuhan administratif?",
+    konteks: "Evaluasi tanpa tindak lanjut kebijakan cenderung kehilangan daya ungkit.",
+  },
+  {
+    no: 13,
+    kategori: "Keamanan & Privasi",
+    q: "Konsolidasi data lintas instansi ke Dasbor Presiden — bagaimana tata kelola keamanan dan pelindungan data pribadinya dipastikan patuh pada UU PDP?",
+    konteks: "Sentralisasi data meningkatkan nilai sekaligus risiko keamanannya.",
+  },
+  {
+    no: 14,
+    kategori: "Definisi Operasional",
+    q: "Istilah seperti 'Layanan Digital prioritas/tematik', 'tingkat mikro', dan 'reviu menyeluruh' perlu kriteria terukur. Bagaimana memastikan seluruh asesor menafsirkannya secara seragam?",
+    konteks: "Ambiguitas definisi berpotensi menimbulkan disparitas penilaian antar-asesor.",
+  },
+];
+
+const saranMembangun = [
+  {
+    no: 1,
+    kategori: "Roadmap",
+    saran: "Terbitkan roadmap nasional dengan masa transisi & milestone tahunan yang jelas, termasuk skenario pendampingan bagi instansi yang belum siap.",
+    manfaat: "Memberi kepastian arah dan menyelaraskan ekspektasi seluruh instansi.",
+  },
+  {
+    no: 2,
+    kategori: "Juknis & Tools",
+    saran: "Segera terbitkan petunjuk teknis, aplikasi Evaluasi Kinerja Pemdi, dan kuesioner final sebelum penilaian pertama, disertai bimbingan teknis masif.",
+    manfaat: "Mengurangi kebingungan implementasi & menyamakan pemahaman sejak awal.",
+  },
+  {
+    no: 3,
+    kategori: "Standar Kepuasan",
+    saran: "Sediakan instrumen baku pengukuran kepuasan pengguna (mis. CSAT/CES/SUS) lengkap dengan pedoman sampling agar hasil objektif & komparabel.",
+    manfaat: "Menjadikan aspek berbobot 25% terukur secara adil dan dapat dibandingkan.",
+  },
+  {
+    no: 4,
+    kategori: "Diferensiasi",
+    saran: "Terapkan kategorisasi/pembobotan kontekstual sesuai tipologi & kapasitas instansi (pusat besar vs kab/kota kecil) untuk menjaga keadilan penilaian.",
+    manfaat: "Mencegah penilaian yang menghukum keterbatasan struktural daerah.",
+  },
+  {
+    no: 5,
+    kategori: "Pendanaan",
+    saran: "Dorong skema pendanaan khusus (DAK bidang digital, hibah, anggaran bersama) bagi daerah berfiskal terbatas untuk keamanan & infrastruktur.",
+    manfaat: "Membuat target indeks realistis dan dapat dicapai secara merata.",
+  },
+  {
+    no: 6,
+    kategori: "Shared Services",
+    saran: "Sediakan layanan bersama nasional (CSIRT nasional, layanan kriptografi, cloud pemerintah) agar instansi kecil tidak membangun dari nol.",
+    manfaat: "Efisiensi biaya & percepatan kematangan keamanan dan teknologi.",
+  },
+  {
+    no: 7,
+    kategori: "Akselerasi SDM",
+    saran: "Bangun program kompetensi digital masif (microlearning, MOOC, sertifikasi) dengan afirmasi untuk daerah 3T & ASN nonteknis.",
+    manfaat: "Menutup kesenjangan kompetensi sebagai prasyarat transformasi digital.",
+  },
+  {
+    no: 8,
+    kategori: "Integrasi Pelaporan",
+    saran: "Integrasikan data dengan evaluasi RB/SAKIP melalui interoperabilitas (tarik data sekali untuk banyak evaluasi) guna menekan beban ganda.",
+    manfaat: "Menghemat waktu instansi & menegakkan prinsip Satu Data.",
+  },
+  {
+    no: 9,
+    kategori: "Asistensi",
+    saran: "Sediakan helpdesk & pendampingan sepanjang tahun, bukan hanya saat evaluasi, termasuk klinik konsultasi per aspek.",
+    manfaat: "Menggeser fokus dari menilai menjadi membina dan memperbaiki.",
+  },
+  {
+    no: 10,
+    kategori: "Insentif",
+    saran: "Bangun sistem penghargaan/pemeringkatan publik bagi yang unggul, dan pendampingan intensif (bukan sekadar sanksi) bagi yang tertinggal.",
+    manfaat: "Menciptakan motivasi positif untuk perbaikan berkelanjutan.",
+  },
+  {
+    no: 11,
+    kategori: "Mutu Asesor",
+    saran: "Selenggarakan sertifikasi asesor, kode etik, kalibrasi penilaian antar-asesor, dan mekanisme sanggah berjenjang yang transparan.",
+    manfaat: "Menjaga kredibilitas, konsistensi, dan keadilan hasil penilaian.",
+  },
+  {
+    no: 12,
+    kategori: "Transparansi",
+    saran: "Publikasikan metodologi, kriteria, dan hasil yang layak publik untuk mendorong pembelajaran antarinstansi & akuntabilitas.",
+    manfaat: "Memperkuat kepercayaan publik dan saling belajar antarinstansi.",
+  },
+  {
+    no: 13,
+    kategori: "Umpan Balik",
+    saran: "Buka kanal umpan balik resmi agar instansi dapat mengusulkan penyempurnaan indikator/kriteria pada tiap siklus evaluasi.",
+    manfaat: "Menjadikan peraturan adaptif & responsif terhadap praktik nyata.",
+  },
+  {
+    no: 14,
+    kategori: "Piloting",
+    saran: "Lakukan uji coba (pilot) pada sejumlah instansi sampel sebelum pemberlakuan nasional untuk mengkalibrasi instrumen & estimasi beban kerja.",
+    manfaat: "Meminimalkan risiko kesalahan instrumen pada skala nasional.",
+  },
+  {
+    no: 15,
+    kategori: "Tata Kelola Data",
+    saran: "Perkuat keamanan & privasi Dasbor Presiden dengan audit independen berkala dan kepatuhan penuh pada UU PDP.",
+    manfaat: "Menyeimbangkan manfaat konsolidasi data dengan mitigasi risikonya.",
+  },
+];
+
 module.exports = {
   meta,
   aspek,
@@ -629,4 +814,6 @@ module.exports = {
   tindakLanjut,
   kuis,
   glosarium,
+  pertanyaanKritis,
+  saranMembangun,
 };

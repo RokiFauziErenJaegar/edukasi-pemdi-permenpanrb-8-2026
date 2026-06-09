@@ -30,6 +30,7 @@
       <a href="#kematangan">Kematangan</a>
       <a href="#proses">Proses</a>
       <a href="#tindaklanjut">Tindak Lanjut</a>
+      <a href="#tanggapan">Tanggapan Kritis</a>
       <a href="#kuis">Kuis</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
@@ -168,8 +169,26 @@
       <div class="tl-grid" id="tlGrid"></div>
     </section>
 
+    <!-- TANGGAPAN KRITIS -->
+    <section class="section alt" id="tanggapan">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sudut Pandang ASN Kritis</span>
+        <h2>Tanggapan terhadap Peraturan Baru</h2>
+        <p class="lead">Mendukung peraturan ini sekaligus mengawalnya secara konstruktif: daftar <strong>pertanyaan kritis</strong> yang perlu kejelasan, dan <strong>saran membangun</strong> agar implementasinya berhasil.</p>
+      </div>
+      <div class="tab-switch reveal">
+        <button class="tab-btn active" data-tab="tanya">❓ Pertanyaan Kritis <span class="tab-count" id="countTanya"></span></button>
+        <button class="tab-btn" data-tab="saran">💡 Saran Membangun <span class="tab-count" id="countSaran"></span></button>
+      </div>
+      <div class="tab-pane active" id="paneTanya"><div class="resp-grid" id="tanyaGrid"></div></div>
+      <div class="tab-pane" id="paneSaran"><div class="resp-grid" id="saranGrid"></div></div>
+      <div class="resp-disclaimer reveal">
+        Catatan: tanggapan ini disusun sebagai bahan diskusi & masukan konstruktif dalam rangka belajar bersama — bukan bentuk penolakan terhadap peraturan. Setiap ASN didorong untuk berpikir kritis demi keberhasilan implementasi Pemdi.
+      </div>
+    </section>
+
     <!-- KUIS -->
-    <section class="section alt" id="kuis">
+    <section class="section" id="kuis">
       <div class="section-head reveal">
         <span class="eyebrow">Uji Pemahaman</span>
         <h2>Kuis Cepat ASN</h2>
@@ -179,7 +198,7 @@
     </section>
 
     <!-- GLOSARIUM -->
-    <section class="section" id="glosarium">
+    <section class="section alt" id="glosarium">
       <div class="section-head reveal">
         <span class="eyebrow">Kamus Istilah</span>
         <h2>Glosarium</h2>

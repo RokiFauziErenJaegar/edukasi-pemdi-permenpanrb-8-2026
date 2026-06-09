@@ -27,6 +27,8 @@ app.get("/api/data", (_req, res) => {
     metodePenilaian: data.metodePenilaian,
     tindakLanjut: data.tindakLanjut,
     glosarium: data.glosarium,
+    pertanyaanKritis: data.pertanyaanKritis,
+    saranMembangun: data.saranMembangun,
   });
 });
 
