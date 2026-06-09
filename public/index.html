@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pemdi 2026 — Edukasi PermenPANRB No. 8 Tahun 2026</title>
+  <meta name="description" content="Web edukasi interaktif perbandingan PermenPANRB 8/2026 (Evaluasi Kinerja Pemerintah Digital) dengan SPBE (59/2020) untuk ASN." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇩</text></svg>" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+  <!-- Progress bar -->
+  <div id="scrollProgress"></div>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="brand">
+      <span class="brand-badge">PD</span>
+      <span class="brand-text">Pemdi<strong>2026</strong></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#ringkasan">Ringkasan</a>
+      <a href="#perbandingan">Perbandingan</a>
+      <a href="#aspek">Aspek &amp; Indikator</a>
+      <a href="#simulasi">Simulasi Indeks</a>
+      <a href="#kematangan">Kematangan</a>
+      <a href="#proses">Proses</a>
+      <a href="#tindaklanjut">Tindak Lanjut</a>
+      <a href="#kuis">Kuis</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-tag reveal">PERATURAN BARU · Berlaku 2026</div>
+      <h1 class="hero-title reveal">
+        Dari <span class="strike">SPBE</span> menuju
+        <span class="grad">Pemerintah Digital</span>
+      </h1>
+      <p class="hero-sub reveal">
+        Mengenal <strong>PermenPANRB No. 8 Tahun 2026</strong> tentang
+        <strong>Evaluasi Kinerja Pemerintah Digital</strong> — yang menggantikan
+        PermenPANRB No. 59 Tahun 2020 tentang Pemantauan &amp; Evaluasi SPBE.
+        Media belajar bersama untuk ASN.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#perbandingan" class="btn btn-primary">Lihat Perbedaannya ↓</a>
+        <a href="#simulasi" class="btn btn-ghost">Coba Simulasi Indeks</a>
+      </div>
+      <div class="hero-stats reveal" id="heroStats"></div>
+    </div>
+    <div class="scroll-hint">⌄</div>
+  </section>
+
+  <main>
+    <!-- RINGKASAN -->
+    <section class="section" id="ringkasan">
+      <div class="section-head reveal">
+        <span class="eyebrow">Apa &amp; Mengapa</span>
+        <h2>Ringkasan Peraturan Baru</h2>
+        <p class="lead">Perubahan paradigma: dari sekadar mendigitalkan sistem (SPBE) menjadi mengukur <strong>hasil &amp; dampak layanan bagi pengguna</strong> (Pemerintah Digital / Human Based Governance).</p>
+      </div>
+      <div class="cards-3" id="ringkasanCards"></div>
+      <div class="why-banner reveal">
+        <div>
+          <h3>Mengapa peraturan ini lahir?</h3>
+          <p>Berdasarkan <strong>RPJMN 2025–2029 (Perpres 12/2025)</strong>, instrumen evaluasi berubah dari Indeks SPBE menjadi <strong>Indeks Pemdi</strong>. PermenPANRB 59/2020 dinilai tidak lagi sesuai dengan perkembangan layanan digital pemerintah, sehingga dicabut dan diganti.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERBANDINGAN -->
+    <section class="section alt" id="perbandingan">
+      <div class="section-head reveal">
+        <span class="eyebrow">Side by Side</span>
+        <h2>Perbandingan: SPBE 2020 vs Pemdi 2026</h2>
+        <p class="lead">Geser/klik tiap baris untuk memahami apa yang berubah dan seberapa besar dampaknya bagi instansi.</p>
+      </div>
+      <div class="legend reveal">
+        <span><i class="dot lama"></i> PermenPANRB 59/2020 (Lama)</span>
+        <span><i class="dot baru"></i> PermenPANRB 8/2026 (Baru)</span>
+        <span class="legend-impact"><i class="dot t-tinggi"></i>Dampak tinggi <i class="dot t-sedang"></i>sedang <i class="dot t-rendah"></i>rendah</span>
+      </div>
+      <div class="compare-list" id="compareList"></div>
+    </section>
+
+    <!-- ASPEK & INDIKATOR -->
+    <section class="section" id="aspek">
+      <div class="section-head reveal">
+        <span class="eyebrow">Struktur Penilaian</span>
+        <h2>7 Aspek &amp; 20 Indikator Indeks Pemdi</h2>
+        <p class="lead">Klik kartu aspek untuk melihat indikator &amp; bobotnya. Bobot total = 100%.</p>
+      </div>
+      <div class="aspek-layout">
+        <div class="aspek-grid" id="aspekGrid"></div>
+        <div class="aspek-chart-wrap reveal">
+          <h3>Distribusi Bobot Aspek</h3>
+          <canvas id="bobotChart"></canvas>
+          <p class="chart-note">Aspek <strong>Kepuasan Pengguna (25%)</strong> adalah yang terbesar — inti pergeseran ke fokus pengguna.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMULASI -->
+    <section class="section alt" id="simulasi">
+      <div class="section-head reveal">
+        <span class="eyebrow">Interaktif</span>
+        <h2>Simulasi Indeks Pemdi</h2>
+        <p class="lead">Atur nilai kematangan (1–5) tiap aspek. Sistem menghitung Indeks Pemdi tertimbang &amp; predikatnya — persis metode pada Lampiran.</p>
+      </div>
+      <div class="sim-layout">
+        <div class="sim-controls" id="simControls"></div>
+        <div class="sim-result reveal">
+          <div class="gauge">
+            <canvas id="gaugeChart"></canvas>
+            <div class="gauge-center">
+              <span class="gauge-value" id="simValue">1.00</span>
+              <span class="gauge-label">Indeks Pemdi</span>
+            </div>
+          </div>
+          <div class="sim-predikat" id="simPredikat"></div>
+          <p class="sim-formula">Indeks Pemdi = Σ (Bobot Aspek × Nilai Aspek)</p>
+          <button class="btn btn-ghost btn-sm" id="simReset">Set semua = 3 (contoh)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEMATANGAN -->
+    <section class="section" id="kematangan">
+      <div class="section-head reveal">
+        <span class="eyebrow">Skala 1 – 5</span>
+        <h2>5 Tingkat Kematangan Pemdi</h2>
+        <p class="lead">Setiap instansi dipetakan ke salah satu predikat berdasarkan nilai Indeks Pemdi.</p>
+      </div>
+      <div class="ladder" id="ladder"></div>
+    </section>
+
+    <!-- PROSES -->
+    <section class="section alt" id="proses">
+      <div class="section-head reveal">
+        <span class="eyebrow">Bagaimana Dinilai</span>
+        <h2>Proses Evaluasi Kinerja Pemdi</h2>
+        <p class="lead">Tiga tahap utama dengan pembagian peran Deputi (Kementerian PANRB) dan Instansi Pemerintah.</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+      <h3 class="sub-head reveal">Empat Metode Penilaian</h3>
+      <div class="metode-grid" id="metodeGrid"></div>
+    </section>
+
+    <!-- TINDAK LANJUT -->
+    <section class="section" id="tindaklanjut">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pedoman Aksi</span>
+        <h2>Apa yang Perlu Ditindaklanjuti?</h2>
+        <p class="lead">Checklist kesiapan instansi terhadap peraturan baru. Centang yang sudah dilakukan — progres tersimpan otomatis di perangkat Anda.</p>
+      </div>
+      <div class="tl-progress reveal">
+        <div class="tl-bar"><span id="tlBarFill"></span></div>
+        <span id="tlProgressText">0% siap</span>
+      </div>
+      <div class="tl-grid" id="tlGrid"></div>
+    </section>
+
+    <!-- KUIS -->
+    <section class="section alt" id="kuis">
+      <div class="section-head reveal">
+        <span class="eyebrow">Uji Pemahaman</span>
+        <h2>Kuis Cepat ASN</h2>
+        <p class="lead">Sudah paham peraturan baru? Buktikan dengan 8 pertanyaan singkat.</p>
+      </div>
+      <div class="quiz-card reveal" id="quizCard"></div>
+    </section>
+
+    <!-- GLOSARIUM -->
+    <section class="section" id="glosarium">
+      <div class="section-head reveal">
+        <span class="eyebrow">Kamus Istilah</span>
+        <h2>Glosarium</h2>
+      </div>
+      <div class="glos-grid" id="glosGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <span class="brand-badge">PD</span>
+        <strong>Edukasi Pemerintah Digital</strong>
+      </div>
+      <p>Media pembelajaran ASN atas <strong>PermenPANRB No. 8 Tahun 2026</strong> tentang Evaluasi Kinerja Pemerintah Digital. Disusun oleh Pranata Komputer untuk dipelajari bersama. Bukan dokumen resmi — rujuk salinan resmi di jdih.menpan.go.id.</p>
+      <p class="muted">Dibangun dengan Node.js + Express · 2026</p>
+    </div>
+  </footer>
+
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

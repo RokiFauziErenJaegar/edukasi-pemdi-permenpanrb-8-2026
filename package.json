@@ -1,0 +1,23 @@
+{
+  "name": "edukasi-pemdi-permenpanrb-8-2026",
+  "version": "1.0.0",
+  "description": "Web edukasi interaktif perbandingan PermenPANRB 8/2026 (Evaluasi Kinerja Pemerintah Digital) dengan PermenPANRB 59/2020 (SPBE) untuk pembelajaran ASN.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "pemdi",
+    "permenpanrb",
+    "spbe",
+    "pemerintah-digital",
+    "edukasi-asn",
+    "indeks-pemdi"
+  ],
+  "author": "Pranata Komputer - Dinas Sosial",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
