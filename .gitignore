@@ -3,3 +3,8 @@ npm-debug.log*
 .env
 .DS_Store
 reg.txt
+
+# Arsip bukti dukung asli (data instansi — tidak dipublikasikan)
+INDIKATOR spbe/
+preview.png
+_*.png

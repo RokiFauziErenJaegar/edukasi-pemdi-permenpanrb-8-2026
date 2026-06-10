@@ -185,7 +185,24 @@ function renderKomparasiIndeks() {
   const counts = { reuse: 0, update: 0, baru: 0 };
   ki.pemetaan.forEach((p) => counts[p.status]++);
   const total = ki.pemetaan.length;
+  // hitung inventori bukti dukung
+  let totalTersedia = 0,
+    totalBaru = 0;
+  ki.pemetaan.forEach((p) => {
+    totalTersedia += (p.buktiTersedia || []).length;
+    totalBaru += (p.buktiBaru || []).length;
+  });
+  const inv = ki.inventori;
   $("#kiSummary").innerHTML = `
+    ${
+      inv
+        ? `<div class="ki-inv">📂 Dianalisis dari <b>${inv.jumlahFolder} folder indikator</b> (${inv.perkiraanBerkas}) — ${inv.sumber}. ${inv.catatan}</div>`
+        : ""
+    }
+    <div class="ki-evi">
+      <div class="ki-evi-card tersedia"><b>${totalTersedia}</b><span>berkas bukti dukung SPBE dapat dipakai ulang / dimutakhirkan</span></div>
+      <div class="ki-evi-card baru"><b>${totalBaru}</b><span>bukti dukung baru perlu disiapkan untuk Indeks Pemdi</span></div>
+    </div>
     <div class="ki-sum-bar">
       ${ki.statusLegend
         .map(
@@ -217,6 +234,16 @@ function renderKomparasiIndeks() {
   // cards
   const cardHTML = (p) => {
     const st = statusMap[p.status];
+    const tersedia = p.buktiTersedia || [];
+    const baru = p.buktiBaru || [];
+    const tersediaHTML = tersedia.length
+      ? `<ul>${tersedia
+          .map(
+            (b) =>
+              `<li>${b.nama}${b.sumber ? ` <span class="ki-src">${b.sumber}</span>` : ""}</li>`
+          )
+          .join("")}</ul>`
+      : `<p class="ki-empty">Belum ada berkas pada arsip SPBE — perlu disiapkan baru.</p>`;
     return `
     <article class="ki-item reveal" data-status="${p.status}" style="--ac:${p.warna};--sc:${st.warna}">
       <div class="ki-item-head">
@@ -228,9 +255,13 @@ function renderKomparasiIndeks() {
         <span class="ki-status">${st.label}</span>
       </div>
       <div class="ki-asal"><span class="ki-lbl">Asal di Indeks SPBE</span>${p.asalSPBE}</div>
-      <div class="ki-bukti">
-        <span class="ki-lbl">Bukti dukung yang dapat dilampirkan</span>
-        <ul>${p.bukti.map((b) => `<li>${b}</li>`).join("")}</ul>
+      <div class="ki-bukti reuse">
+        <span class="ki-lbl">♻️ Tersedia di arsip SPBE — dapat dipakai ulang <span class="ki-cnt">${tersedia.length}</span></span>
+        ${tersediaHTML}
+      </div>
+      <div class="ki-bukti baru">
+        <span class="ki-lbl">✚ Bukti dukung baru untuk Pemdi <span class="ki-cnt">${baru.length}</span></span>
+        <ul>${baru.map((b) => `<li>${b}</li>`).join("")}</ul>
       </div>
     </article>`;
   };

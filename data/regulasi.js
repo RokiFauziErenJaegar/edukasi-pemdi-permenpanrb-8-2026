@@ -841,209 +841,290 @@ const komparasiIndeks = {
     { key: "update", label: "Perlu pemutakhiran", warna: "#f59e0b", ket: "Bukti dukung SPBE dipakai dengan penyesuaian terminologi/substansi." },
     { key: "baru", label: "Indikator baru", warna: "#3b82f6", ket: "Belum ada padanan kuat di SPBE — bukti dukung perlu disiapkan baru." },
   ],
+  // Inventori bukti dukung yang dianalisis (direktori INDIKATOR spbe)
+  inventori: {
+    sumber: "Arsip bukti dukung Evaluasi SPBE Kabupaten Pringsewu",
+    jumlahFolder: 47,
+    perkiraanBerkas: "±427 berkas",
+    catatan:
+      "Setiap indikator Pemdi di bawah memetakan bukti dukung NYATA yang tersedia pada arsip SPBE (dapat dipakai ulang/dimutakhirkan) dan bukti dukung BARU yang perlu disiapkan untuk Indeks Pemdi.",
+  },
+  // Pemetaan per indikator Pemdi:
+  //   buktiTersedia = berkas yang sudah ada pada arsip SPBE (siap dipakai ulang/dimutakhirkan)
+  //   buktiBaru     = bukti dukung baru yang perlu dibuat untuk Indeks Pemdi
   pemetaan: [
     {
       no: 1, aspek: "Tata Kelola dan Manajemen", warna: "#2563eb", bobot: 5, status: "update",
       nama: "Tingkat Kematangan Tata Kelola Pemdi",
-      asalSPBE: "Domain Tata Kelola SPBE — Aspek Strategi & Perencanaan (Arsitektur SPBE, Peta Rencana SPBE) & Domain Kebijakan SPBE.",
-      bukti: [
-        "Dokumen Arsitektur SPBE → dimutakhirkan menjadi Arsitektur Pemdi",
-        "Peta Rencana (Roadmap) SPBE → diselaraskan dengan Rencana Aksi Pemdi",
-        "Dokumen Rencana & Anggaran SPBE / Renstra–Renja",
-        "Kebijakan internal tata kelola (Perkada/SK)",
+      asalSPBE: "Domain Tata Kelola SPBE — Aspek Strategi & Perencanaan (Arsitektur & Peta Rencana SPBE) + Domain Kebijakan SPBE.",
+      buktiTersedia: [
+        { nama: "Perbup SPBE 2023 & Perbup 38/2018 Masterplan e-Gov", sumber: "Ind. 1" },
+        { nama: "Dokumen Arsitektur SPBE lengkap (proses bisnis, layanan, data, aplikasi, keamanan, infrastruktur)", sumber: "Ind. 11" },
+        { nama: "Road Map / Peta Rencana SPBE Kab. Pringsewu", sumber: "Ind. 12" },
+        { nama: "DPA Murni/Perubahan & Renstra 2023–2026 Diskominfo", sumber: "Ind. 13" },
+      ],
+      buktiBaru: [
+        "Dokumen Arsitektur Pemdi (selaras Arsitektur Pemdi Nasional & RPJMN 2025–2029)",
+        "Rencana Aksi Pemdi instansi (mengacu Rencana Aksi Nasional Pemdi)",
+        "Kebijakan/Perkada bernomenklatur 'Pemdi' (pengganti Perbup SPBE)",
       ],
     },
     {
       no: 2, aspek: "Tata Kelola dan Manajemen", warna: "#2563eb", bobot: 5, status: "reuse",
       nama: "Tingkat Kematangan Manajemen Layanan Digital Pemerintah",
-      asalSPBE: "Domain Manajemen SPBE — Aspek Penerapan Manajemen SPBE (manajemen risiko, perubahan, pengetahuan, layanan, dll).",
-      bukti: [
-        "Dokumen Manajemen Risiko SPBE",
-        "Dokumen Manajemen Perubahan & Manajemen Pengetahuan",
-        "Dokumen/SOP Manajemen Layanan",
-        "Laporan penerapan manajemen SPBE",
+      asalSPBE: "Domain Manajemen SPBE — Aspek Penerapan Manajemen SPBE.",
+      buktiTersedia: [
+        { nama: "Dokumen Manajemen Risiko SPBE (.xlsx)", sumber: "Ind. 21" },
+        { nama: "Penerapan Manajemen Pengetahuan + Website Pengetahuan SPBE", sumber: "Ind. 26" },
+        { nama: "Cakupan Materi Penerapan Manajemen Perubahan", sumber: "Ind. 27/28" },
+        { nama: "Manajemen Aset TIK (SIMDA Barang)", sumber: "Ind. 24" },
+      ],
+      buktiBaru: [
+        "Dokumen Manajemen Keberlangsungan (Business Continuity) layanan digital",
+        "Dokumen Manajemen Relasi Pengguna",
+        "Konsolidasi 5 manajemen ke 'Manajemen Layanan Digital Pemerintah'",
       ],
     },
     {
       no: 3, aspek: "Penyelenggara", warna: "#0891b2", bobot: 5, status: "update",
       nama: "Tingkat Kematangan Sumber Daya Manusia Pemdi",
-      asalSPBE: "Domain Manajemen SPBE — Manajemen SDM (sebagian); SPBE belum punya indikator kompetensi digital tersendiri.",
-      bukti: [
-        "Dokumen Manajemen SDM SPBE",
-        "Peta/asesmen kompetensi & sertifikat pelatihan TIK",
-        "Rencana pengembangan kompetensi digital ASN (tambah: literasi AI & analisis data)",
+      asalSPBE: "Domain Manajemen SPBE — Manajemen SDM (kompetensi belum jadi indikator tersendiri).",
+      buktiTersedia: [
+        { nama: "Sertifikat GCIO, BNSP Programmer, Cyber Security, dll", sumber: "Ind. 25" },
+        { nama: "Screenshot Cakupan Penerapan Kompetensi SDM + SK Programmer", sumber: "Ind. 25" },
+      ],
+      buktiBaru: [
+        "Peta Kompetensi Digital ASN (Kepemimpinan, Kemahiran, Literasi Digital)",
+        "Bukti pelatihan pemanfaatan AI & analisis data",
+        "Rencana & realisasi peningkatan kompetensi >90% ASN pengelola",
       ],
     },
     {
       no: 4, aspek: "Penyelenggara", warna: "#0891b2", bobot: 5, status: "update",
       nama: "Tingkat Kematangan Kolaborasi Pemdi",
       asalSPBE: "Domain Tata Kelola SPBE — Aspek Kelembagaan (Tim Koordinasi/Forum SPBE).",
-      bukti: [
-        "SK Tim Koordinasi SPBE → Forum Koordinasi Pemdi",
-        "Notula/daftar hadir rapat koordinasi SPBE",
-        "Dokumen kerja sama/MoU (tambah: co-creation multipihak)",
+      buktiTersedia: [
+        { nama: "SK Tim Koordinasi SPBE / SK Tim Penyelenggara TIK", sumber: "Ind. 19" },
+        { nama: "PKS dengan Kab. Mesuji + dokumentasi FGD/koordinasi", sumber: "Ind. 20" },
+      ],
+      buktiBaru: [
+        "SK & notula Forum Koordinasi Pemdi",
+        "Bukti kolaborasi co-creation (akademisi, industri, komunitas)",
+        "Bukti kontribusi/koordinasi untuk Dasbor Presiden",
       ],
     },
     {
       no: 5, aspek: "Data", warna: "#7c3aed", bobot: 5, status: "reuse",
       nama: "Tingkat Kematangan Tata Kelola Data",
-      asalSPBE: "Domain Kebijakan (Kebijakan Data) & Manajemen (Manajemen Data); penerapan Satu Data Indonesia.",
-      bukti: [
-        "Kebijakan/SK Satu Data Indonesia & SK Walidata",
-        "Daftar data, standar data & metadata",
-        "Portal/katalog data instansi",
-        "Berita acara forum Satu Data",
+      asalSPBE: "Domain Kebijakan (Kebijakan Data) & Manajemen Data; penerapan Satu Data Indonesia.",
+      buktiTersedia: [
+        { nama: "Penerapan Manajemen Data SPBE + Pendataan Aplikasi tiap OPD", sumber: "Ind. 23" },
+        { nama: "Open Data + Dasar Hukum Satu Data", sumber: "Ind. 43" },
+        { nama: "Kebijakan proses pengelolaan manajemen data (Perbup)", sumber: "Ind. 3" },
+      ],
+      buktiBaru: [
+        "SK Walidata & berita acara Forum Satu Data instansi",
+        "Standar data & metadata sesuai prinsip SDI",
+        "Perhitungan skor SDI (interoperabilitas dengan indeks SDI)",
       ],
     },
     {
       no: 6, aspek: "Data", warna: "#7c3aed", bobot: 3, status: "baru",
       nama: "Tingkat Kematangan Penyelenggaraan Informasi Geospasial",
-      asalSPBE: "Tidak ada indikator khusus di SPBE (sebagian masuk pengelolaan data).",
-      bukti: [
-        "Dokumen Simpul Jaringan Informasi Geospasial",
+      asalSPBE: "Tidak ada indikator/berkas khusus di arsip SPBE.",
+      buktiTersedia: [],
+      buktiBaru: [
+        "SK Simpul Jaringan Informasi Geospasial",
         "Walidata geospasial & metadata IG",
-        "Bukti pemanfaatan/berbagi pakai data geospasial",
+        "Bukti berbagi pakai/pemanfaatan data geospasial",
       ],
     },
     {
       no: 7, aspek: "Data", warna: "#7c3aed", bobot: 3, status: "baru",
       nama: "Tingkat Kematangan Pembangunan Statistik",
-      asalSPBE: "Tidak ada indikator khusus di SPBE.",
-      bukti: [
-        "Rekomendasi statistik sektoral (dari BPS)",
+      asalSPBE: "Hanya sebagian (data sektoral) pada arsip Manajemen Data.",
+      buktiTersedia: [
+        { nama: "Data Sektoral & sampel hasil olah data", sumber: "Ind. 23" },
+      ],
+      buktiBaru: [
+        "Rekomendasi statistik sektoral dari BPS",
         "Metadata statistik & publikasi data statistik",
         "Dokumen pembinaan statistik sektoral",
       ],
     },
     {
-      no: 8, aspek: "Data", warna: "#7c3aed", bobot: 4, status: "update",
+      no: 8, aspek: "Data", warna: "#7c3aed", bobot: 4, status: "baru",
       nama: "Tingkat Kematangan Pelindungan Data Pribadi",
-      asalSPBE: "Domain Keamanan SPBE — Manajemen Keamanan Informasi (sebagian).",
-      bukti: [
-        "Kebijakan pelindungan data pribadi (selaras UU PDP)",
+      asalSPBE: "Hanya sebagian (Manajemen Keamanan Informasi); belum ada berkas PDP khusus.",
+      buktiTersedia: [
+        { nama: "Manajemen Keamanan Informasi (parsial)", sumber: "Ind. 22" },
+      ],
+      buktiBaru: [
+        "Kebijakan Pelindungan Data Pribadi (selaras UU 27/2022)",
         "Penunjukan Pejabat/Petugas Pelindungan Data (DPO)",
-        "Kebijakan privasi & mekanisme persetujuan (consent)",
-        "Penilaian dampak pelindungan data (DPIA)",
+        "Kebijakan privasi, mekanisme consent, & DPIA",
       ],
     },
     {
       no: 9, aspek: "Keamanan Pemdi", warna: "#dc2626", bobot: 4, status: "reuse",
       nama: "Tingkat Kematangan Pelaksanaan Audit Keamanan Pemdi dan Teknologi Pemdi",
-      asalSPBE: "Domain Manajemen SPBE — Aspek Audit TIK (audit infrastruktur, aplikasi, keamanan).",
-      bukti: [
-        "Laporan Audit TIK / Audit Keamanan SPBE",
-        "Dokumen tindak lanjut temuan audit",
-        "Sertifikat/laporan audit pihak ketiga (mis. ISO 27001)",
+      asalSPBE: "Domain Manajemen SPBE — Aspek Audit TIK (infrastruktur, aplikasi, keamanan).",
+      buktiTersedia: [
+        { nama: "SK Audit Diskominfo + Audit Infrastruktur (akun Audit Tools BRIN)", sumber: "Ind. 29/30" },
+        { nama: "Indeks KAMI v4.2 KOMINFO + Tools TMPI (audit keamanan)", sumber: "Ind. 31" },
+        { nama: "Cakupan Audit TIK & Audit TIK seluruh Perangkat Daerah", sumber: "Ind. 9" },
+      ],
+      buktiBaru: [
+        "Laporan audit keamanan Pemdi & teknologi sesuai pedoman baru",
+        "Dokumen tindak lanjut temuan audit terkini",
       ],
     },
     {
       no: 10, aspek: "Keamanan Pemdi", warna: "#dc2626", bobot: 4, status: "reuse",
       nama: "Tingkat Kematangan Keamanan Pemdi",
-      asalSPBE: "Domain Kebijakan (Kebijakan Keamanan) & Manajemen Keamanan Informasi SPBE.",
-      bukti: [
-        "Kebijakan/SOP Keamanan Informasi",
-        "Dokumen SMKI / sertifikat ISO 27001",
-        "Manajemen risiko keamanan & identifikasi Infrastruktur Informasi Vital",
+      asalSPBE: "Domain Kebijakan (Keamanan) & Manajemen Keamanan Informasi SPBE.",
+      buktiTersedia: [
+        { nama: "Manajemen Keamanan Informasi: SK CSIRT, Tools TMPI", sumber: "Ind. 22" },
+        { nama: "Indeks KAMI v4.2", sumber: "Ind. 31" },
+        { nama: "Kebijakan Manajemen Keamanan (Perbup) + SK Tim CSIRT", sumber: "Ind. 8" },
+      ],
+      buktiBaru: [
+        "Dokumen identifikasi Infrastruktur Informasi Vital (IIV)",
+        "Penerapan/sertifikasi SMKI ISO 27001 (bila belum)",
+        "Pemutakhiran Indeks KAMI versi terkini",
       ],
     },
     {
       no: 11, aspek: "Keamanan Pemdi", warna: "#dc2626", bobot: 3, status: "update",
       nama: "Tingkat Kematangan Penerapan Kriptografi untuk Keamanan Data",
-      asalSPBE: "Domain Keamanan SPBE (sebagian: penggunaan sertifikat elektronik/TTE).",
-      bukti: [
-        "Bukti penggunaan Sertifikat Elektronik (BSrE) / Tanda Tangan Elektronik",
-        "Kebijakan & implementasi enkripsi data",
-        "Dokumen penerapan kriptografi pada layanan",
+      asalSPBE: "Domain Layanan SPBE (sebagian: penggunaan TTE/sertifikat elektronik).",
+      buktiTersedia: [
+        { nama: "PKS TTE dengan BSSN + screenshot TTE pada Srikandi", sumber: "Ind. 37" },
+        { nama: "Sertifikat kompetensi Sandi/keamanan", sumber: "Ind. 25" },
+      ],
+      buktiBaru: [
+        "Kebijakan & implementasi enkripsi data (data at rest/in transit)",
+        "Perluasan penerapan kriptografi ke layanan digital lain",
       ],
     },
     {
-      no: 12, aspek: "Keamanan Pemdi", warna: "#dc2626", bobot: 4, status: "baru",
+      no: 12, aspek: "Keamanan Pemdi", warna: "#dc2626", bobot: 4, status: "update",
       nama: "Tingkat Kematangan Kapabilitas Penanganan Insiden Siber",
-      asalSPBE: "Belum menjadi indikator tersendiri di SPBE (sebagian manajemen keamanan).",
-      bukti: [
-        "SK pembentukan Tim Tanggap Insiden Siber (CSIRT)",
+      asalSPBE: "Sebagian (Manajemen Keamanan Informasi); belum jadi indikator tersendiri di SPBE.",
+      buktiTersedia: [
+        { nama: "SK Tim CSIRT", sumber: "Ind. 8 / 22" },
+        { nama: "Sertifikat Penanganan Insiden Keamanan SPBE", sumber: "Ind. 25" },
+      ],
+      buktiBaru: [
         "SOP penanganan & pelaporan insiden siber",
-        "Log/laporan penanganan insiden & koordinasi dengan BSSN",
+        "Log/laporan penanganan insiden",
+        "Registrasi & koordinasi CSIRT dengan BSSN",
       ],
     },
     {
       no: 13, aspek: "Teknologi Pemdi", warna: "#ea580c", bobot: 5, status: "reuse",
       nama: "Tingkat Kematangan Aplikasi Pemdi",
-      asalSPBE: "Domain Kebijakan (Kebijakan Aplikasi) & Layanan SPBE (aplikasi umum/khusus).",
-      bukti: [
-        "Daftar/portofolio aplikasi & dokumentasi aplikasi",
-        "Bukti pemanfaatan aplikasi umum berbagi pakai",
-        "Tangkapan layar & dokumen pengembangan aplikasi",
+      asalSPBE: "Domain Kebijakan (Aplikasi) & Layanan SPBE (aplikasi umum/khusus).",
+      buktiTersedia: [
+        { nama: "Pembangunan Aplikasi SPBE (perencanaan→pemeliharaan) + SOP + Surat Edaran", sumber: "Ind. 15" },
+        { nama: "Pendataan aplikasi seluruh OPD", sumber: "Ind. 23" },
+        { nama: "Kebijakan siklus pembangunan aplikasi (Perbup)", sumber: "Ind. 4" },
+      ],
+      buktiBaru: [
+        "Portofolio aplikasi Pemdi terkini",
+        "Bukti pemanfaatan aplikasi umum berbagi pakai nasional",
       ],
     },
     {
       no: 14, aspek: "Teknologi Pemdi", warna: "#ea580c", bobot: 5, status: "reuse",
       nama: "Tingkat Kematangan Infrastruktur Pemdi",
-      asalSPBE: "Domain Tata Kelola SPBE — Aspek TIK (Pusat Data, Jaringan Intra, Sistem Penghubung Layanan).",
-      bukti: [
-        "Dokumen pusat data / pemanfaatan Pusat Data Nasional",
-        "Topologi & dokumen Jaringan Intra Pemerintah",
-        "Kontrak/dokumen komputasi awan (cloud) pemerintah",
+      asalSPBE: "Domain Tata Kelola SPBE — Aspek TIK (Pusat Data, Jaringan Intra).",
+      buktiTersedia: [
+        { nama: "Pemanfaatan PDN/Data Center: SOP PDN, dokumentasi, surat permohonan", sumber: "Ind. 16" },
+        { nama: "Jaringan Intra Pemerintah: SOP + titik lokasi jaringan", sumber: "Ind. 17" },
+        { nama: "Arsitektur Infrastruktur: komputasi awan, server, jaringan (.xlsx)", sumber: "Ind. 11" },
+      ],
+      buktiBaru: [
+        "Bukti pemanfaatan PDN & komputasi awan pemerintah terkini",
+        "Pemutakhiran topologi & kapasitas infrastruktur",
       ],
     },
     {
       no: 15, aspek: "Keterpaduan Layanan Digital Pemerintah", warna: "#16a34a", bobot: 4, status: "reuse",
       nama: "Keterpaduan Proses Bisnis Pemdi Lintas Unit dan Instansi",
-      asalSPBE: "Domain Kebijakan (Kebijakan Proses Bisnis) & Layanan SPBE.",
-      bukti: [
-        "Dokumen Peta Proses Bisnis instansi",
-        "SOP layanan lintas unit/instansi",
-        "Bukti keterpaduan proses bisnis antarlayanan",
+      asalSPBE: "Domain Kebijakan (Proses Bisnis) & Tata Kelola SPBE.",
+      buktiTersedia: [
+        { nama: "SK Peta Proses Bisnis Pemkab Pringsewu 2023", sumber: "Ind. 14" },
+        { nama: "Domain Arsitektur Proses Bisnis (.xlsx)", sumber: "Ind. 11" },
+      ],
+      buktiBaru: [
+        "Peta proses bisnis terpadu lintas instansi",
+        "Bukti keterpaduan/penyederhanaan layanan antarunit",
       ],
     },
     {
       no: 16, aspek: "Keterpaduan Layanan Digital Pemerintah", warna: "#16a34a", bobot: 4, status: "reuse",
       nama: "Integrasi Aplikasi",
-      asalSPBE: "Domain Layanan SPBE — integrasi aplikasi & Sistem Penghubung Layanan Pemerintah (SPLP).",
-      bukti: [
-        "Dokumentasi integrasi aplikasi / API",
-        "Bukti pemanfaatan SPLP",
-        "Tangkapan layar integrasi antaraplikasi",
+      asalSPBE: "Domain Layanan SPBE — integrasi aplikasi & SPLP.",
+      buktiTersedia: [
+        { nama: "SPLP: SOP + dokumentasi pemanfaatan", sumber: "Ind. 18" },
+        { nama: "Integrasi LPSE–SiKaP, SIMDA Barang–Keuangan, e-Pajak–Bank Lampung, JDIH–JDIHN", sumber: "Ind. 35/38/47/44" },
+      ],
+      buktiBaru: [
+        "Dokumentasi integrasi/API terbaru antaraplikasi",
+        "Perluasan integrasi lintas instansi via SPLP",
       ],
     },
     {
       no: 17, aspek: "Keterpaduan Layanan Digital Pemerintah", warna: "#16a34a", bobot: 4, status: "reuse",
       nama: "Portal Layanan Digital Pemerintah",
-      asalSPBE: "Domain Layanan SPBE — Layanan Administrasi Pemerintahan & Layanan Publik Berbasis Elektronik.",
-      bukti: [
-        "Tautan & tangkapan layar portal layanan",
-        "Daftar layanan yang terintegrasi pada portal",
-        "Dokumen integrasi layanan ke portal nasional",
+      asalSPBE: "Domain Layanan SPBE — layanan administrasi & publik berbasis elektronik.",
+      buktiTersedia: [
+        { nama: "Layanan SIPD, SIASN, SIMPEGNAS, Srikandi, OSS, dll", sumber: "Ind. 32–45" },
+        { nama: "Layanan publik: Getuksewu & e-Pajak", sumber: "Ind. 46/47" },
+      ],
+      buktiBaru: [
+        "Portal layanan digital terpadu (satu pintu) instansi",
+        "Bukti integrasi layanan ke portal layanan nasional",
       ],
     },
     {
       no: 18, aspek: "Keterpaduan Layanan Digital Pemerintah", warna: "#16a34a", bobot: 3, status: "reuse",
       nama: "Interoperabilitas Data",
       asalSPBE: "Domain Layanan SPBE — berbagi pakai data & SPLP.",
-      bukti: [
-        "Perjanjian/berita acara berbagi pakai data",
-        "Dokumentasi API pertukaran data antarsistem",
-        "Bukti pemanfaatan walidata & layanan interoperabilitas",
+      buktiTersedia: [
+        { nama: "Pemanfaatan SPLP", sumber: "Ind. 18" },
+        { nama: "Transaksi 2 arah/verifikasi data (SIASN, JDIH–JDIHN, Open Data)", sumber: "Ind. 36/44/43" },
+      ],
+      buktiBaru: [
+        "Perjanjian/berita acara berbagi pakai data antarinstansi",
+        "Dokumentasi API pertukaran data berbasis walidata",
       ],
     },
     {
       no: 19, aspek: "Kepuasan Pengguna Layanan Digital Pemerintah", warna: "#ca8a04", bobot: 10, status: "update",
       nama: "Fasilitas Dukungan Pengguna Layanan Digital Pemerintah",
-      asalSPBE: "Domain Layanan SPBE — Layanan Publik (kanal pengaduan, mis. SP4N-LAPOR).",
-      bukti: [
-        "Bukti kanal bantuan/pengaduan (SP4N-LAPOR, helpdesk, call center)",
+      asalSPBE: "Domain Layanan SPBE — Layanan Pengaduan Publik (SP4N-LAPOR).",
+      buktiTersedia: [
+        { nama: "SP4N-LAPOR: dasar hukum, fitur pengaduan & gambaran pengaduan publik", sumber: "Ind. 42" },
+      ],
+      buktiBaru: [
+        "Kanal bantuan/helpdesk khusus layanan digital",
         "SOP layanan & penanganan keluhan",
-        "FAQ / panduan pengguna & sistem pemantauan keluhan",
+        "FAQ/panduan pengguna & sistem pemantauan keluhan",
       ],
     },
     {
       no: 20, aspek: "Kepuasan Pengguna Layanan Digital Pemerintah", warna: "#ca8a04", bobot: 15, status: "update",
       nama: "Tingkat Pengelolaan Kepuasan Pengguna Layanan Digital Pemerintah",
-      asalSPBE: "Domain Layanan SPBE (sebagian: belum ada indikator pengelolaan kepuasan tersendiri).",
-      bukti: [
-        "Hasil Survei Kepuasan Masyarakat (SKM) layanan",
-        "Rekap & analisis umpan balik/komentar publik yang ditindaklanjuti",
-        "Laporan pengelolaan kepuasan & inklusivitas layanan",
+      asalSPBE: "Domain Layanan SPBE (sebagian: penanganan pengaduan publik).",
+      buktiTersedia: [
+        { nama: "Gambaran & penanganan pengaduan publik (SP4N-LAPOR)", sumber: "Ind. 42" },
+      ],
+      buktiBaru: [
+        "Hasil Survei Kepuasan Masyarakat (SKM) layanan digital",
+        "Analisis umpan balik publik & bukti tindak lanjutnya",
+        "Laporan inklusivitas layanan (gender & kelompok rentan)",
       ],
     },
   ],
