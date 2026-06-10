@@ -29,6 +29,7 @@ app.get("/api/data", (_req, res) => {
     glosarium: data.glosarium,
     pertanyaanKritis: data.pertanyaanKritis,
     saranMembangun: data.saranMembangun,
+    komparasiIndeks: data.komparasiIndeks,
   });
 });
 

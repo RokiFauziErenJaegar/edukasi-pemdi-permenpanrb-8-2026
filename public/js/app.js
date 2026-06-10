@@ -22,6 +22,7 @@ async function init() {
   renderHeroStats();
   renderRingkasan();
   renderCompare();
+  renderKomparasiIndeks();
   renderAspek();
   renderBobotChart();
   renderSimulasi();
@@ -154,6 +155,108 @@ function renderCompare() {
       row.classList.toggle("open")
     );
   });
+}
+
+/* ---------- KOMPARASI INDEKS & BUKTI DUKUNG ---------- */
+function renderKomparasiIndeks() {
+  const ki = DATA.komparasiIndeks;
+  if (!ki) return;
+  const statusMap = {};
+  ki.statusLegend.forEach((s) => (statusMap[s.key] = s));
+
+  // header dua indeks
+  const c = ki.ringkas;
+  $("#kiCompare").innerHTML = `
+    <div class="ki-card lama">
+      <span class="ki-tag">${c.spbe.nama}</span>
+      <div class="ki-struktur">${c.spbe.struktur}</div>
+      <div class="ki-meta">${c.spbe.skala}</div>
+      <p>${c.spbe.fokus}</p>
+    </div>
+    <div class="ki-arrow">→</div>
+    <div class="ki-card baru">
+      <span class="ki-tag">${c.pemdi.nama}</span>
+      <div class="ki-struktur">${c.pemdi.struktur}</div>
+      <div class="ki-meta">${c.pemdi.skala}</div>
+      <p>${c.pemdi.fokus}</p>
+    </div>`;
+
+  // ringkasan reusability
+  const counts = { reuse: 0, update: 0, baru: 0 };
+  ki.pemetaan.forEach((p) => counts[p.status]++);
+  const total = ki.pemetaan.length;
+  $("#kiSummary").innerHTML = `
+    <div class="ki-sum-bar">
+      ${ki.statusLegend
+        .map(
+          (s) =>
+            `<span class="ki-seg" style="flex:${counts[s.key]};background:${s.warna}" title="${s.label}: ${counts[s.key]}"></span>`
+        )
+        .join("")}
+    </div>
+    <div class="ki-sum-legend">
+      ${ki.statusLegend
+        .map(
+          (s) =>
+            `<span class="ki-sum-item"><i style="background:${s.warna}"></i><b>${counts[s.key]}</b> ${s.label}</span>`
+        )
+        .join("")}
+      <span class="ki-sum-note">dari ${total} indikator Pemdi</span>
+    </div>`;
+
+  // filter buttons
+  $("#kiFilter").innerHTML =
+    `<button class="ki-fbtn active" data-f="all">Semua (${total})</button>` +
+    ki.statusLegend
+      .map(
+        (s) =>
+          `<button class="ki-fbtn" data-f="${s.key}" style="--fc:${s.warna}">${s.label} (${counts[s.key]})</button>`
+      )
+      .join("");
+
+  // cards
+  const cardHTML = (p) => {
+    const st = statusMap[p.status];
+    return `
+    <article class="ki-item reveal" data-status="${p.status}" style="--ac:${p.warna};--sc:${st.warna}">
+      <div class="ki-item-head">
+        <span class="ki-no">${String(p.no).padStart(2, "0")}</span>
+        <div class="ki-item-title">
+          <b>${p.nama}</b>
+          <small>${p.aspek} · bobot ${p.bobot}%</small>
+        </div>
+        <span class="ki-status">${st.label}</span>
+      </div>
+      <div class="ki-asal"><span class="ki-lbl">Asal di Indeks SPBE</span>${p.asalSPBE}</div>
+      <div class="ki-bukti">
+        <span class="ki-lbl">Bukti dukung yang dapat dilampirkan</span>
+        <ul>${p.bukti.map((b) => `<li>${b}</li>`).join("")}</ul>
+      </div>
+    </article>`;
+  };
+  const grid = $("#kiGrid");
+  grid.innerHTML = ki.pemetaan.map(cardHTML).join("");
+
+  $$("#kiFilter .ki-fbtn").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const f = btn.dataset.f;
+      $$("#kiFilter .ki-fbtn").forEach((b) => b.classList.toggle("active", b === btn));
+      $$("#kiGrid .ki-item").forEach((card) => {
+        card.style.display = f === "all" || card.dataset.status === f ? "" : "none";
+      });
+    })
+  );
+
+  // struktur lama referensi
+  $("#kiRefGrid").innerHTML = ki.spbeStruktur
+    .map(
+      (d) => `
+    <div class="ki-ref-card">
+      <h4>${d.domain}</h4>
+      <ul>${d.aspek.map((a) => `<li>${a}</li>`).join("")}</ul>
+    </div>`
+    )
+    .join("");
 }
 
 /* ---------- ASPEK ---------- */
