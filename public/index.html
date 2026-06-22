@@ -31,6 +31,7 @@
       <a href="#kematangan">Kematangan</a>
       <a href="#proses">Proses</a>
       <a href="#tindaklanjut">Tindak Lanjut</a>
+      <a href="#pohonkinerja">Pohon Kinerja</a>
       <a href="#tanggapan">Tanggapan Kritis</a>
       <a href="#kuis">Kuis</a>
     </nav>
@@ -188,6 +189,37 @@
         <span id="tlProgressText">0% siap</span>
       </div>
       <div class="tl-grid" id="tlGrid"></div>
+    </section>
+
+    <!-- POHON KINERJA & CASCADING -->
+    <section class="section" id="pohonkinerja">
+      <div class="section-head reveal">
+        <span class="eyebrow">SAKIP · Bidang SPBE/Pemdi</span>
+        <h2>Pohon Kinerja &amp; Cascading</h2>
+        <p class="lead">Bagaimana IKU <strong>Indeks Pemdi</strong> diturunkan (cascade) dari Kepala Dinas Kominfo Pringsewu hingga Pranata Komputer &amp; pelaksana di Bidang SPBE.</p>
+      </div>
+
+      <div class="pk-org reveal" id="pkOrg"></div>
+
+      <div class="tab-switch reveal">
+        <button class="tab-btn active" data-ptab="pohon">🌳 Pohon Kinerja</button>
+        <button class="tab-btn" data-ptab="cascade">🔻 Cascading Kinerja</button>
+      </div>
+
+      <div class="ptab-pane active" id="panePohon">
+        <div class="pk-legend reveal" id="pkLegend"></div>
+        <div class="pk-tools reveal">
+          <button class="btn btn-ghost btn-sm" id="pkExpand">Buka semua</button>
+          <button class="btn btn-ghost btn-sm" id="pkCollapse">Tutup semua</button>
+        </div>
+        <div class="pk-tree reveal" id="pkTree"></div>
+      </div>
+
+      <div class="ptab-pane" id="paneCascade">
+        <div class="cas-jenis reveal" id="casJenis"></div>
+        <div class="cas-flow" id="casFlow"></div>
+        <p class="cas-note reveal" id="casNote"></p>
+      </div>
     </section>
 
     <!-- TANGGAPAN KRITIS -->

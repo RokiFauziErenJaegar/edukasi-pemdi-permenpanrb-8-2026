@@ -1130,6 +1130,199 @@ const komparasiIndeks = {
   ],
 };
 
+/* ----------------------------------------------------------------------------
+ * POHON KINERJA & CASCADING — Bidang SPBE/Pemdi Diskominfo Kab. Pringsewu
+ * Mengacu konsep Pohon Kinerja (Permenpan RB 89/2021) & Cascading SKP
+ * (Permenpan RB 6/2022). IKU utama: Indeks Pemdi, di-cascade dari Kepala
+ * Dinas hingga pejabat fungsional/pelaksana.
+ *
+ * CATATAN: struktur & target di bawah adalah CONTOH/TEMPLATE berbasis
+ * struktur umum Dinas Kominfo & aspek Indeks Pemdi — sesuaikan dengan
+ * SK, Renstra, Perjanjian Kinerja, dan SOTK resmi instansi.
+ * -------------------------------------------------------------------------- */
+const pohonKinerja = {
+  meta: {
+    instansi: "Dinas Komunikasi dan Informatika Kabupaten Pringsewu",
+    bidang: "Bidang Penyelenggaraan E-Government (SPBE / Pemdi)",
+    dasar: "Permenpan RB 89/2021 (Pohon Kinerja) & 6/2022 (Pengelolaan Kinerja Pegawai)",
+    catatan:
+      "Contoh/template — IKU Indeks Pemdi di-cascade dari pimpinan ke pelaksana. Aspek Penyelenggara (SDM & Kolaborasi digital) bersifat lintas dan dibina bersama Sekretariat.",
+  },
+  levelLegend: [
+    { key: "strategis", label: "Sasaran Strategis", warna: "#3b82f6" },
+    { key: "program", label: "Sasaran Program", warna: "#22d3ee" },
+    { key: "kegiatan", label: "Sasaran Kegiatan", warna: "#7c3aed" },
+    { key: "aksi", label: "Rencana Aksi / Aktivitas", warna: "#f59e0b" },
+  ],
+  root: {
+    level: "strategis",
+    jabatan: "Kepala Dinas Kominfo",
+    sasaran: "Terwujudnya penyelenggaraan Pemerintah Digital (Pemdi) yang terpadu dan berdampak bagi masyarakat",
+    indikator: "Indeks Pemerintah Digital (Indeks Pemdi)",
+    target: "3,50 — Sangat Baik (Embedded)",
+    jenis: "IKU / Sasaran Strategis",
+    children: [
+      {
+        level: "program",
+        jabatan: "Kepala Bidang Penyelenggaraan E-Government (SPBE)",
+        sasaran: "Meningkatnya kematangan tata kelola, teknologi, keamanan, dan data Pemdi",
+        indikator: "Rata-rata nilai aspek Pemdi yang menjadi binaan bidang",
+        target: "≥ 3,50",
+        jenis: "Sasaran Program (cascade direct)",
+        children: [
+          {
+            level: "kegiatan",
+            jabatan: "Sub-Koordinator Tata Kelola & Layanan Digital",
+            sasaran: "Meningkatnya kematangan tata kelola & keterpaduan layanan digital pemerintah",
+            indikator: "Nilai aspek Tata Kelola & Manajemen + Keterpaduan Layanan",
+            target: "3,50 / 3,25",
+            jenis: "Sasaran Kegiatan",
+            aspek: [1, 6, 7],
+            children: [
+              {
+                level: "aksi",
+                jabatan: "Analis SPBE / Tata Kelola",
+                sasaran: "Tersusunnya Arsitektur Pemdi & Rencana Aksi Pemdi instansi",
+                indikator: "Dokumen Arsitektur & Rencana Aksi Pemdi",
+                target: "1 dokumen (tersusun & direviu)",
+                jenis: "Rencana Aksi (IKI)",
+              },
+              {
+                level: "aksi",
+                jabatan: "Pranata Komputer (Integrasi Layanan)",
+                sasaran: "Terintegrasinya aplikasi & portal layanan digital",
+                indikator: "Jumlah aplikasi terintegrasi via SPLP",
+                target: "≥ 10 aplikasi",
+                jenis: "Rencana Aksi (IKI)",
+              },
+              {
+                level: "aksi",
+                jabatan: "Pengelola Layanan & Pengaduan",
+                sasaran: "Meningkatnya kepuasan pengguna layanan digital",
+                indikator: "Nilai Survei Kepuasan Masyarakat (SKM) layanan digital",
+                target: "≥ 3,50 (Baik)",
+                jenis: "Rencana Aksi (IKI)",
+              },
+            ],
+          },
+          {
+            level: "kegiatan",
+            jabatan: "Sub-Koordinator Infrastruktur & Teknologi",
+            sasaran: "Tersedianya infrastruktur & aplikasi Pemdi yang andal dan aman",
+            indikator: "Nilai aspek Teknologi Pemdi",
+            target: "3,75",
+            jenis: "Sasaran Kegiatan",
+            aspek: [5],
+            children: [
+              {
+                level: "aksi",
+                jabatan: "Pranata Komputer (Infrastruktur)",
+                sasaran: "Terkelolanya Pusat Data (PDN) & Jaringan Intra Pemerintah",
+                indikator: "% layanan pada PDN & ketersediaan (uptime) jaringan",
+                target: "100% / ≥ 99%",
+                jenis: "Rencana Aksi (IKI)",
+              },
+              {
+                level: "aksi",
+                jabatan: "Pranata Komputer (Pengembangan Aplikasi)",
+                sasaran: "Terbangunnya aplikasi sesuai siklus (SDLC) & SOP",
+                indikator: "Jumlah aplikasi dibangun/dipelihara sesuai SOP",
+                target: "Sesuai target tahunan",
+                jenis: "Rencana Aksi (IKI)",
+              },
+            ],
+          },
+          {
+            level: "kegiatan",
+            jabatan: "Sub-Koordinator Keamanan Informasi & Persandian",
+            sasaran: "Meningkatnya keamanan Pemdi & ketahanan siber",
+            indikator: "Nilai aspek Keamanan Pemdi / Indeks KAMI",
+            target: "3,50 / KAMI meningkat",
+            jenis: "Sasaran Kegiatan",
+            aspek: [4],
+            children: [
+              {
+                level: "aksi",
+                jabatan: "Sandiman / Pranata Keamanan",
+                sasaran: "Terlaksananya audit keamanan & tindak lanjut temuan",
+                indikator: "Audit keamanan/tahun & % tindak lanjut temuan",
+                target: "1 audit / 100% TL",
+                jenis: "Rencana Aksi (IKI)",
+              },
+              {
+                level: "aksi",
+                jabatan: "Pengelola CSIRT",
+                sasaran: "Beroperasinya CSIRT & penerapan kriptografi (TTE/enkripsi)",
+                indikator: "CSIRT aktif & % layanan ber-TTE/terenkripsi",
+                target: "Aktif / meningkat",
+                jenis: "Rencana Aksi (IKI)",
+              },
+            ],
+          },
+          {
+            level: "kegiatan",
+            jabatan: "Sub-Koordinator Data & Statistik",
+            sasaran: "Terwujudnya tata kelola data sesuai prinsip Satu Data Indonesia",
+            indikator: "Nilai aspek Data / Skor SDI",
+            target: "3,50 / SDI ≥ 62,5",
+            jenis: "Sasaran Kegiatan",
+            aspek: [3],
+            children: [
+              {
+                level: "aksi",
+                jabatan: "Statistisi / Pengelola Data (Walidata)",
+                sasaran: "Terselenggaranya Satu Data Indonesia (data terstandar)",
+                indikator: "Skor SDI & jumlah dataset terstandar (metadata)",
+                target: "SDI ≥ 62,5",
+                jenis: "Rencana Aksi (IKI)",
+              },
+              {
+                level: "aksi",
+                jabatan: "Pranata Komputer (PDP & Geospasial)",
+                sasaran: "Terlindunginya data pribadi & terkelolanya data geospasial",
+                indikator: "Kebijakan PDP & simpul jaringan Informasi Geospasial",
+                target: "Tersedia & berjalan",
+                jenis: "Rencana Aksi (IKI)",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+};
+
+const cascadingKinerja = {
+  penjelasan:
+    "Cascading = penyelarasan kinerja secara vertikal dari pimpinan ke bawahan. Direct cascading: indikator pimpinan dibagi/diturunkan langsung (mis. nilai aspek). Non-direct cascading: bawahan memakai indikator pendukung/aktivitas yang berkontribusi pada sasaran atasan.",
+  jenis: [
+    { nama: "Direct Cascading", ket: "Indikator/target atasan dibagi langsung ke bawahan (komponen pembentuk Indeks Pemdi).", warna: "#22c55e" },
+    { nama: "Non-direct Cascading", ket: "Bawahan memakai indikator aktivitas/output pendukung yang menopang sasaran atasan.", warna: "#f59e0b" },
+  ],
+  level: [
+    {
+      no: 1, tingkat: "JPT Pratama", jabatan: "Kepala Dinas Kominfo",
+      peran: "Pemilik Sasaran Strategis", kinerja: "Terwujudnya Pemdi yang terpadu & berdampak",
+      indikator: "Indeks Pemdi", target: "3,50 (Sangat Baik)", cascade: "Outcome / Impact", warna: "#3b82f6",
+    },
+    {
+      no: 2, tingkat: "Administrator (Eselon III)", jabatan: "Kepala Bidang Penyelenggaraan E-Government (SPBE)",
+      peran: "Pemilik Sasaran Program", kinerja: "Meningkatnya kematangan aspek Pemdi binaan bidang",
+      indikator: "Rata-rata nilai aspek Pemdi", target: "≥ 3,50", cascade: "Direct", warna: "#22d3ee",
+    },
+    {
+      no: 3, tingkat: "Pengawas / Sub-Koordinator", jabatan: "Sub-Koordinator (Tata Kelola, Infrastruktur, Keamanan, Data)",
+      peran: "Pemilik Sasaran Kegiatan", kinerja: "Tercapainya nilai aspek Pemdi spesifik per seksi",
+      indikator: "Nilai aspek (Tata Kelola/Teknologi/Keamanan/Data)", target: "3,50 – 3,75", cascade: "Direct & Non-direct", warna: "#7c3aed",
+    },
+    {
+      no: 4, tingkat: "Pelaksana / Fungsional", jabatan: "Pranata Komputer, Sandiman, Statistisi, Pengelola Layanan",
+      peran: "Pelaksana Rencana Aksi", kinerja: "Terlaksananya aktivitas teknis (aplikasi, infra, audit, walidata, layanan)",
+      indikator: "Output aktivitas (IKI) pada SKP", target: "Sesuai SKP tahunan", cascade: "Non-direct", warna: "#f59e0b",
+    },
+  ],
+};
+
 module.exports = {
   meta,
   aspek,
@@ -1144,4 +1337,6 @@ module.exports = {
   pertanyaanKritis,
   saranMembangun,
   komparasiIndeks,
+  pohonKinerja,
+  cascadingKinerja,
 };

@@ -8,3 +8,8 @@ reg.txt
 INDIKATOR spbe/
 preview.png
 _*.png
+
+# Skrip & log auto-start lokal (berisi path absolut perangkat)
+start-server.cmd
+start-hidden.vbs
+server.log

@@ -30,6 +30,8 @@ app.get("/api/data", (_req, res) => {
     pertanyaanKritis: data.pertanyaanKritis,
     saranMembangun: data.saranMembangun,
     komparasiIndeks: data.komparasiIndeks,
+    pohonKinerja: data.pohonKinerja,
+    cascadingKinerja: data.cascadingKinerja,
   });
 });
 

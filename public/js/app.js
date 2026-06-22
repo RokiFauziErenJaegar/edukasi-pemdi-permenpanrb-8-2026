@@ -30,6 +30,7 @@ async function init() {
   renderTimeline();
   renderMetode();
   renderTindakLanjut();
+  renderPohonKinerja();
   renderTanggapan();
   renderGlosarium();
   initQuiz();
@@ -509,6 +510,111 @@ function updateTLProgress() {
   const pct = all.length ? Math.round((done / all.length) * 100) : 0;
   $("#tlBarFill").style.width = pct + "%";
   $("#tlProgressText").textContent = `${pct}% siap (${done}/${all.length})`;
+}
+
+/* ---------- POHON KINERJA & CASCADING ---------- */
+function renderPohonKinerja() {
+  const pk = DATA.pohonKinerja;
+  const cas = DATA.cascadingKinerja;
+  if (!pk) return;
+  const lvlMap = {};
+  pk.levelLegend.forEach((l) => (lvlMap[l.key] = l));
+  const aspekColor = {};
+  (DATA.aspek || []).forEach((a) => (aspekColor[a.no] = a.warna));
+
+  // header organisasi
+  $("#pkOrg").innerHTML = `
+    <div class="pk-org-main">
+      <span class="pk-org-icon">🏛️</span>
+      <div>
+        <b>${pk.meta.instansi}</b>
+        <span>${pk.meta.bidang}</span>
+      </div>
+    </div>
+    <div class="pk-org-dasar">Dasar: ${pk.meta.dasar}</div>`;
+
+  // legend level
+  $("#pkLegend").innerHTML = pk.levelLegend
+    .map((l) => `<span class="pk-leg"><i style="background:${l.warna}"></i>${l.label}</span>`)
+    .join("");
+
+  // recursive tree
+  const nodeHTML = (n, depth) => {
+    const lv = lvlMap[n.level] || { warna: "#64748b", label: n.level };
+    const hasChild = n.children && n.children.length;
+    const aspekDots = (n.aspek || [])
+      .map((no) => `<i class="pk-aspek-dot" style="background:${aspekColor[no] || "#888"}" title="Aspek ${no}"></i>`)
+      .join("");
+    return `
+    <li class="pk-node ${hasChild ? "has-child open" : ""}" style="--lc:${lv.warna}">
+      <div class="pk-card" ${hasChild ? 'data-toggle="1"' : ""}>
+        ${hasChild ? '<span class="pk-twist">▾</span>' : '<span class="pk-leaf-dot"></span>'}
+        <div class="pk-card-body">
+          <div class="pk-card-top">
+            <span class="pk-level">${lv.label}</span>
+            ${aspekDots ? `<span class="pk-aspek">${aspekDots}</span>` : ""}
+          </div>
+          <b class="pk-jabatan">${n.jabatan}</b>
+          <p class="pk-sasaran">${n.sasaran}</p>
+          <div class="pk-ind"><span class="pk-ind-lbl">${n.jenis || "Indikator"}</span>${n.indikator} <span class="pk-target">🎯 ${n.target}</span></div>
+        </div>
+      </div>
+      ${hasChild ? `<ul class="pk-children">${n.children.map((c) => nodeHTML(c, depth + 1)).join("")}</ul>` : ""}
+    </li>`;
+  };
+  $("#pkTree").innerHTML = `<ul class="pk-root">${nodeHTML(pk.root, 0)}</ul>`;
+
+  // toggle expand/collapse
+  $$("#pkTree .pk-card[data-toggle]").forEach((card) =>
+    card.addEventListener("click", () => card.closest(".pk-node").classList.toggle("open"))
+  );
+  $("#pkExpand").addEventListener("click", () =>
+    $$("#pkTree .pk-node.has-child").forEach((n) => n.classList.add("open"))
+  );
+  $("#pkCollapse").addEventListener("click", () =>
+    $$("#pkTree .pk-node.has-child").forEach((n, i) => i > 0 && n.classList.remove("open"))
+  );
+
+  // cascading
+  if (cas) {
+    $("#casJenis").innerHTML = cas.jenis
+      .map(
+        (j) =>
+          `<div class="cas-jcard" style="--jc:${j.warna}"><b>${j.nama}</b><span>${j.ket}</span></div>`
+      )
+      .join("");
+    $("#casFlow").innerHTML = cas.level
+      .map(
+        (l, i) => `
+      <div class="cas-row reveal" style="--cc:${l.warna}">
+        <div class="cas-lvl"><span class="cas-no">${l.no}</span><span class="cas-tingkat">${l.tingkat}</span></div>
+        <div class="cas-detail">
+          <b>${l.jabatan}</b>
+          <span class="cas-peran">${l.peran}</span>
+          <p class="cas-kinerja">${l.kinerja}</p>
+          <div class="cas-meta">
+            <span class="cas-chip ind">📊 ${l.indikator}</span>
+            <span class="cas-chip tgt">🎯 ${l.target}</span>
+            <span class="cas-chip cas">↧ ${l.cascade}</span>
+          </div>
+        </div>
+      </div>
+      ${i < cas.level.length - 1 ? '<div class="cas-arrow">↓</div>' : ""}`
+      )
+      .join("");
+    $("#casNote").textContent = cas.penjelasan;
+  }
+
+  // tab switch
+  $$("#pohonkinerja .tab-btn").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const t = btn.dataset.ptab;
+      $$("#pohonkinerja .tab-btn").forEach((b) => b.classList.toggle("active", b === btn));
+      $("#panePohon").classList.toggle("active", t === "pohon");
+      $("#paneCascade").classList.toggle("active", t === "cascade");
+      setupReveal();
+    })
+  );
 }
 
 /* ---------- TANGGAPAN KRITIS ---------- */
